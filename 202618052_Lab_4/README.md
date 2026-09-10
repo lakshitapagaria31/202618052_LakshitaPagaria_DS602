@@ -1,9 +1,27 @@
-# Lab 4: Applied Statistical Modeling
+# Medical Insurance Statistical Modeling Dashboard
 
-Interactive statistical analysis of the Medical Insurance Costs dataset using
-Python, `statsmodels`, `scipy`, `seaborn`, and Streamlit.
+### Lab 4 | Applied Statistical Modeling | DS602
 
-## Project Structure
+[![Open Dashboard](https://img.shields.io/badge/Live%20Dashboard-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://medical-insurance-statistical-modeling-dashboard.streamlit.app/)
+[![Dataset](https://img.shields.io/badge/Dataset-Kaggle-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/apoorvayerpude/healthcare-dataset/data)
+
+> An interactive statistical modeling dashboard for exploring medical insurance
+> costs, testing group differences, fitting an OLS model, and evaluating its
+> diagnostic assumptions.
+
+## Live Resources
+
+| Resource | Link |
+|---|---|
+| **Hosted dashboard** | [Open Insurance Analytics Dashboard](https://medical-insurance-statistical-modeling-dashboard.streamlit.app/) |
+| **Dataset source** | [Healthcare Dataset on Kaggle](https://www.kaggle.com/datasets/apoorvayerpude/healthcare-dataset/data) |
+
+## Project Overview
+This project applies an end-to-end statistical workflow to a medical insurance
+dataset containing demographic characteristics, health-related variables, and
+insurance charges. The dashboard is designed for both exploratory analysis and
+model-based inference, with interactive controls that update the analysis as
+the selected sample changes.
 
 ```text
 202618052_Lab_4/
@@ -11,10 +29,36 @@ Python, `statsmodels`, `scipy`, `seaborn`, and Streamlit.
 |-- analysis.py            # Reproducible command-line analysis
 |-- requirements.txt       # Python dependencies
 |-- data/
-		|-- insurance.csv      # Medical insurance dataset
+	|-- insurance.csv        # Local copy of the analysis dataset
 ```
 
-## Setup
+## Dashboard Features
+
+### 1. Data Exploration
+
+- Interactive filters for age, BMI, smoking status, and region
+- Summary metrics and descriptive statistics
+- Histograms with KDE, bivariate scatter plots, and a correlation heatmap
+
+### 2. Hypothesis Testing Lab
+
+- Dynamic two-group comparison with selectable categorical and numerical
+	variables
+- Shapiro-Wilk normality testing and Levene's equal-variance testing
+- Automatic selection of an independent t-test or Mann-Whitney U test
+- Dynamic one-way ANOVA across selectable groups
+- Clear decisions at significance level $\alpha = 0.05$
+
+### 3. Prediction and Diagnostics
+
+- Multiple linear regression using `statsmodels.api.OLS`
+- Coefficients, p-values, 95% confidence intervals, R-squared, and adjusted
+	R-squared
+- Live charge prediction with 95% confidence and prediction intervals
+- Residuals-versus-fitted plot and Q-Q plot
+- Jarque-Bera residual normality test and VIF analysis
+
+## Installation
 
 Open PowerShell in this folder and run:
 
@@ -24,10 +68,14 @@ python -m venv venv
 python -m pip install -r requirements.txt
 ```
 
-If the virtual environment already exists, only the activation and dependency
-installation commands are needed.
+If `venv` already exists, activate it and install the dependencies with the
+last two commands.
 
-## Run the Dashboard
+## Run Locally
+
+Run all commands from the `202618052_Lab_4` directory.
+
+### Launch the dashboard
 
 ```powershell
 .\venv\Scripts\streamlit.exe run app.py
@@ -45,7 +93,7 @@ The dashboard contains three tabs:
 3. **Prediction and Diagnostics**: OLS regression, coefficient inference,
 	 live prediction intervals, residual plots, Jarque-Bera testing, and VIF.
 
-## Run the Analysis Script
+### Run the reproducible analysis
 
 For a console-based report and diagnostic figures:
 
@@ -124,3 +172,22 @@ The following values come from the complete dataset of 1,338 observations.
 	path `data/insurance.csv`.
 - The dashboard recalculates filtered summaries, hypothesis tests, regression,
 	prediction intervals, and diagnostics when the selected data changes.
+
+## Deployment
+
+The dashboard is deployed with Streamlit Community Cloud. The application entry
+point is `202618052_Lab_4/app.py`, and the repository-level `requirements.txt`
+contains the packages required for deployment.
+
+To deploy a copy of this project, select the repository, choose the `main`
+branch, and set the main file path to:
+
+```text
+202618052_Lab_4/app.py
+```
+
+## Academic Context
+
+This project was completed for **Lab 4: Applied Statistical Modeling** in the
+course **Statistical Methods(DS602)**, M.Sc. Data Science,
+Semester 1.
